@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Discord.Commands;
+using LunaBot.ServerUtilities;
+
 
 namespace LunaBot
 {
@@ -12,8 +14,8 @@ namespace LunaBot
         // Start in an async context
         static void Main(string[] args)
         {
+            new LunaBot.ServerUtilities.Serialize().Run();
             new Engine().RunAsync().GetAwaiter().GetResult();
-
         }
     }
 }

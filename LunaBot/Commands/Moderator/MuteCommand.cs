@@ -1,5 +1,6 @@
 ﻿using Discord.WebSocket;
 using LunaBot.ServerUtilities;
+using LunaBot;
 using System.Linq;
 using System.Threading.Tasks;
 
