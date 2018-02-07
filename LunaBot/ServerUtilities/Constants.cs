@@ -11,18 +11,7 @@ using System.IO;
 /// </summary>
 namespace LunaBot.ServerUtilities
 {
-    class Serialize
-    {
-        static void Run()
-        {
-            UserIds meme = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
-           // userIds = new UserIds { };
-
-            Console.WriteLine(meme.Mods);
-        }
-    }
-
-    /*internal static class UserIds1
+    /*internal static class UserIds
     {
         /// <summary>
         /// Owners of the FR server
@@ -79,14 +68,20 @@ namespace LunaBot.ServerUtilities
 
         internal static OverwritePermissions mutePerm = new OverwritePermissions(PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Allow, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Allow, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny);
 
-    }
-    */
+    }*/
+
     public class UserIds
     {
-        public IList<ulong> Mods { get; set; }
-        internal static ulong Luna { get; set; }
-        internal static ulong Lobby { get; set; }
-        internal static ulong Guild { get; set; }
-        internal static IList<ulong> Roles { get; set; }
+        public List<ulong> Mods { get; set; }
+        /*
+        0. Hellblaze
+        1. Flash
+        2. Noodles
+        3. Zelenyy
+         */
+        public ulong Luna { get; set; }
+        public ulong Lobby { get; set; }
+        public ulong Guild { get; set; }
+        public List<string> Roles { get; set; }
     }
 }

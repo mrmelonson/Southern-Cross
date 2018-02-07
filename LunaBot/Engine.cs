@@ -30,11 +30,10 @@ namespace LunaBot
         public SocketGuild guild;
         public SocketTextChannel lobby;
         public List<SocketRole> roles;
-        public BotReporting report;
+        //public BotReporting report;
 
         public Engine()
         {
-            UserIds UserIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
             this.client = new DiscordSocketClient();
             this.commandDictionary = new Dictionary<string, BaseCommand>();
             this.aliasDictionary = new Dictionary<string, string>();
@@ -80,11 +79,13 @@ namespace LunaBot
 
         private async Task ReadyAsync()
         {
-            guild = client.GetGuild(Guilds.Guild);
-            lobby = client.GetChannel(Channels.Lobby) as SocketTextChannel;
+            UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
+
+            guild = client.GetGuild(userIds.Guild);
+            lobby = client.GetChannel(userIds.Lobby) as SocketTextChannel;
             roles = guild.Roles.ToList();
-            report = new BotReporting(guild.GetChannel(Channels.BotLogs));
-            luna = guild.GetUser(UserIds.Luna);
+            //report = new BotReporting(guild.GetChannel(Channels.BotLogs));
+            luna = guild.GetUser(userIds.Luna);
 
 
             // Set Playing flavor text
