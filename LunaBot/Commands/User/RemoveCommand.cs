@@ -16,6 +16,11 @@ namespace LunaBot.Commands
         {
             UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
 
+            if (!(message.Channel.Id == userIds.Change_Roles))
+            {
+                return;
+            }
+
             if (parameters.Length == 0)
             {
                 Logger.Verbose(message.Author.Username, "Failed remove command");

@@ -101,6 +101,7 @@ namespace LunaBot
         {
             try
             {
+                UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
                 // Log Message
                 await message.LogAsync(LogSeverity.Verbose).ConfigureAwait(false);
 

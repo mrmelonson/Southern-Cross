@@ -77,10 +77,13 @@ namespace LunaBot.ServerUtilities
         0. Hellblaze
         1. Flash
         2. Noodles
-        3. Zelenyy
+        3. Rox
+        4. Zelenyy
          */
         public ulong Luna { get; set; }
         public ulong Lobby { get; set; }
+        public ulong Change_Roles { get; set; }
+        public ulong Staff_spam { get; set; }
         public ulong Guild { get; set; }
         public List<string> Roles { get; set; }
     }
