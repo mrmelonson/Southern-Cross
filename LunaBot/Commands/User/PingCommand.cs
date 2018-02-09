@@ -9,7 +9,7 @@ namespace LunaBot.Commands
     {
         public override async Task ProcessAsync(SocketMessage message, string[] parameters)
         {
-            await message.Channel.SendMessageAsync("Wha-? oh! Pong!");
+            await message.Channel.SendMessageAsync(":ping_pong: Pong!");
         }
     }
 }

@@ -28,10 +28,10 @@ namespace LunaBot.Commands
                 {
                     commands.Add("**Moderation Commands**");
 
-                    commands.Add("Timeout:\n" +
-                        "```ktimeout [user] [time (in seconds)]```");
-                    commands.Add("Timout without timer:\n" +
-                        "```ktimeout [user] 0```");
+                    commands.Add("Mute:\n" +
+                        "```kmute [user] [time (in seconds)]```");
+                    commands.Add("Mute without timer:\n" +
+                        "```kmute [user] 0```");
                     commands.Add("Message purge:\n" +
                         "```kpurge [amount]```");
                     commands.Add("Unmute:\n" +

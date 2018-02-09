@@ -19,6 +19,7 @@ namespace LunaBot.Commands
             //check for the change_roles channel
             if (!(message.Channel.Id == userIds.Change_Roles))
             {
+                await message.Channel.SendMessageAsync($"Sorry, please use assign commands in <#{userIds.Change_Roles}>");
                 return;
             }
 

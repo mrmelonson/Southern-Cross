@@ -40,23 +40,26 @@ namespace LunaBot.Commands
                     }
 
                     ulong user = message.MentionedUsers.FirstOrDefault().Id;
+                    ulong author = message.Author.Id;
 
                     SocketGuildChannel guildChannel = message.Channel as SocketGuildChannel;
                     List<SocketRole> roles = guildChannel.Guild.Roles.ToList();
 
                     try
                     {
-                        Predicate<SocketRole> roleFinder = (SocketRole sr) => { return sr.Name.ToLower() == "mute"; };
+                        Predicate<SocketRole> roleFinder = (SocketRole sr) => { return sr.Name == userIds.Muted; };
                         SocketRole role = roles.Find(roleFinder);
+
+                        SocketGuildUser usersock = guildChannel.GetUser((ulong)user);
 
                         await guildChannel.GetUser((ulong)user).RemoveRoleAsync(role);
 
                         await message.Channel.SendMessageAsync($"<@{user}>, You have been unmuted.");
-                        Logger.Warning(message.Author.Username, $"Has been unmuted");
+                        Logger.Warning(usersock.Username, $"Has been unmuted");
                     }
                     catch (Exception e)
                     {
-                        await message.Channel.SendMessageAsync($"<@{user}>, Sorry, either you mis-spelt the role or i dont have permission to remove that role.");
+                        await message.Channel.SendMessageAsync($"<@{author}>, Sorry, either you mis-spelt the role or i dont have permission to remove that role.");
                         Logger.Warning(message.Author.Username, $"Command failed: {e.Message}");
                     }
 

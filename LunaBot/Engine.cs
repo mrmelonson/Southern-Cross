@@ -89,7 +89,7 @@ namespace LunaBot
 
 
             // Set Playing flavor text
-            await client.SetGameAsync("memes and dreams");
+            await client.SetGameAsync("khelp");
 
             await LobbyAnnouncements.StartupConfirmationAsync(lobby);
 

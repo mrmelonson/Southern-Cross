@@ -86,5 +86,6 @@ namespace LunaBot.ServerUtilities
         public ulong Staff_spam { get; set; }
         public ulong Guild { get; set; }
         public List<string> Roles { get; set; }
+        public string Muted { get; set; }
     }
 }

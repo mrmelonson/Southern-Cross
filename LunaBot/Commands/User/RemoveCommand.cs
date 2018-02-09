@@ -18,6 +18,7 @@ namespace LunaBot.Commands
 
             if (!(message.Channel.Id == userIds.Change_Roles))
             {
+                await message.Channel.SendMessageAsync($"Sorry, please use remove commands in <#{userIds.Change_Roles}>");
                 return;
             }
 

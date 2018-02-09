@@ -35,7 +35,7 @@ namespace LunaBot.ServerUtilities
             List<SocketRole> roles = channel.Guild.Roles.ToList();
 
             // Set mute role
-            muteFinder = (SocketRole sr) => { return sr.Name == "mute"; };
+            muteFinder = (SocketRole sr) => {return sr.Name == userIds.Muted;};
             mute = roles.Find(muteFinder);
             await user.AddRoleAsync(mute);
 
