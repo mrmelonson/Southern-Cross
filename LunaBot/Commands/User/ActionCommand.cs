@@ -47,7 +47,7 @@ namespace LunaBot.Commands
                         }
                         else
                         {
-                            await message.Channel.SendMessageAsync($">:V <@{userId2}> :newspaper2: <@{userId}>");
+                            await message.Channel.SendMessageAsync($"<@{userId}> :newspaper2: <@{userId2}>");
                         }
                     }
                     else if (action == "smooch")
