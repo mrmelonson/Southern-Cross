@@ -103,6 +103,11 @@ namespace LunaBot
             {
                 UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
                 // Log Message
+                foreach(ulong x in userIds.Staff_Channels)
+                {
+                    if (message.Channel.Id == x) { return;  }
+                }
+
                 await message.LogAsync(LogSeverity.Verbose).ConfigureAwait(false);
 
                 // ignore your own message if you ever manage to do this.
