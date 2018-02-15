@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace LunaBot.ServerUtilities
 {
@@ -19,7 +21,9 @@ namespace LunaBot.ServerUtilities
 
         public static async Task MuteAsync(SocketTextChannel channel, SocketGuildUser user, int seconds)
         {
-            if (user.Id == UserIds.Luna)
+            UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
+
+            if (user.Id == userIds.Luna)
                 return;
 
             // Logging, telling the user, and announcing in server.
@@ -31,7 +35,7 @@ namespace LunaBot.ServerUtilities
             List<SocketRole> roles = channel.Guild.Roles.ToList();
 
             // Set mute role
-            muteFinder = (SocketRole sr) => { return sr.Name == "mute"; };
+            muteFinder = (SocketRole sr) => {return sr.Name == userIds.Muted;};
             mute = roles.Find(muteFinder);
             await user.AddRoleAsync(mute);
 

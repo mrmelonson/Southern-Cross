@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Discord.Commands;
+using LunaBot.ServerUtilities;
+
 
 namespace LunaBot
 {
@@ -13,7 +15,6 @@ namespace LunaBot
         static void Main(string[] args)
         {
             new Engine().RunAsync().GetAwaiter().GetResult();
-
         }
     }
 }

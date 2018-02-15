@@ -10,6 +10,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.IO;
 using Task = System.Threading.Tasks.Task;
 
 namespace LunaBot
@@ -20,7 +22,7 @@ namespace LunaBot
         private IDictionary<string, string> aliasDictionary;
         private IDictionary<ulong, DateTime> messageTimestamps;
 
-        
+
         public static SocketGuildUser luna;
 
         private readonly DiscordSocketClient client;
@@ -28,7 +30,7 @@ namespace LunaBot
         public SocketGuild guild;
         public SocketTextChannel lobby;
         public List<SocketRole> roles;
-        public BotReporting report;
+        //public BotReporting report;
 
         public Engine()
         {
@@ -45,9 +47,9 @@ namespace LunaBot
             string token = SecretStrings.token;
             await client.LoginAsync(TokenType.Bot, token);
             await client.StartAsync();
-            
+
             client.MessageReceived += MessageReceivedAsync;
-            
+
             this.RegisterCommands();
 
             client.Ready += ReadyAsync;
@@ -63,41 +65,49 @@ namespace LunaBot
             Type[] commands = Assembly.GetExecutingAssembly().GetTypes().Where(t => String.Equals(t.Namespace, "LunaBot.Commands", StringComparison.Ordinal)).ToArray();
             commands = commands.Where(x => x.GetCustomAttributes(typeof(LunaBotCommandAttribute)).Any()).ToArray();
 
-            foreach(Type command in commands)
+            foreach (Type command in commands)
             {
                 LunaBotCommandAttribute commandAttribute = command.GetCustomAttribute(typeof(LunaBotCommandAttribute)) as LunaBotCommandAttribute;
                 this.commandDictionary[commandAttribute.Name] = Activator.CreateInstance(command) as BaseCommand;
-                
-                foreach(string alias in commandAttribute.Aliases)
+
+                foreach (string alias in commandAttribute.Aliases)
                 {
                     this.aliasDictionary[alias] = commandAttribute.Name;
                 }
             }
         }
-        
+
         private async Task ReadyAsync()
         {
-            guild = client.GetGuild(Guilds.Guild);
-            lobby = client.GetChannel(Channels.Lobby) as SocketTextChannel;
+            UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
+
+            guild = client.GetGuild(userIds.Guild);
+            lobby = client.GetChannel(userIds.Lobby) as SocketTextChannel;
             roles = guild.Roles.ToList();
-            report = new BotReporting(guild.GetChannel(Channels.BotLogs));
-            luna = guild.GetUser(UserIds.Luna);
-            
+            //report = new BotReporting(guild.GetChannel(Channels.BotLogs));
+            luna = guild.GetUser(userIds.Luna);
+
 
             // Set Playing flavor text
-            await client.SetGameAsync("filler");
+            await client.SetGameAsync("khelp");
 
             await LobbyAnnouncements.StartupConfirmationAsync(lobby);
 
             // Remove all mute from muted users
-            
+
         }
 
         private async Task MessageReceivedAsync(SocketMessage message)
         {
             try
             {
+                UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
                 // Log Message
+                foreach(ulong x in userIds.Staff_Channels)
+                {
+                    if (message.Channel.Id == x) { return;  }
+                }
+
                 await message.LogAsync(LogSeverity.Verbose).ConfigureAwait(false);
 
                 // ignore your own message if you ever manage to do this.
@@ -131,7 +141,7 @@ namespace LunaBot
             }
 
         }
-        
+
         private async Task ProcessCommandAsync(SocketMessage message)
         {
             // Cut up the message with the relevent parts
@@ -142,7 +152,7 @@ namespace LunaBot
             commandParamsList.RemoveAt(0);
             string[] commandParams = commandParamsList.ToArray();
 
-            if(this.aliasDictionary.ContainsKey(command))
+            if (this.aliasDictionary.ContainsKey(command))
             {
                 command = this.aliasDictionary[command];
             }
@@ -150,7 +160,7 @@ namespace LunaBot
             if (this.commandDictionary.ContainsKey(command))
             {
                 Logger.Verbose(
-                    message.Author.Username, 
+                    message.Author.Username,
                     string.Format(StringTable.RecognizedCommand, command, string.Join(",", commandParams)));
                 try
                 {

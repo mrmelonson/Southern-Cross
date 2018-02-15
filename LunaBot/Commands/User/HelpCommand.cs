@@ -5,6 +5,8 @@ using Discord.WebSocket;
 using System.Threading.Tasks;
 using LunaBot.ServerUtilities;
 using System;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace LunaBot.Commands
 {
@@ -13,21 +15,23 @@ namespace LunaBot.Commands
     {
         public override async Task ProcessAsync(SocketMessage message, string[] parameters)
         {
+            UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
+
             List<string> commands = new List<string>();
 
             ulong userId = message.Author.Id;
             SocketUser user = message.Author;
 
-            foreach (ulong users in UserIds.Mods)
+            foreach (ulong users in userIds.Mods)
             {
                 if (userId == users)
                 {
                     commands.Add("**Moderation Commands**");
 
-                    commands.Add("Timeout:\n" +
-                        "```ktimeout [user] [time (in seconds)]```");
-                    commands.Add("Timout without timer:\n" +
-                        "```ktimeout [user] 0```");
+                    commands.Add("Mute:\n" +
+                        "```kmute [user] [time (in seconds)]```");
+                    commands.Add("Mute without timer:\n" +
+                        "```kmute [user] 0```");
                     commands.Add("Message purge:\n" +
                         "```kpurge [amount]```");
                     commands.Add("Unmute:\n" +

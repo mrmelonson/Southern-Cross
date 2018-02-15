@@ -2,6 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Discord.WebSocket;
+using LunaBot.ServerUtilities;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace LunaBot.Commands
 {
@@ -10,6 +13,8 @@ namespace LunaBot.Commands
     {
         public override async Task ProcessAsync(SocketMessage message, string[] parameters)
         {
+            UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
+
             ulong userId = message.Author.Id;
             ulong userId2;
 
@@ -36,19 +41,52 @@ namespace LunaBot.Commands
                     }
                     if (action == "bap")
                     {
-                        await message.Channel.SendMessageAsync($"<@{userId}> :newspaper2: <@{userId2}>");
+                        if (userId2 == userIds.Luna)
+                        {
+                            await message.Channel.SendMessageAsync($">:V <@{userId2}> :newspaper2: <@{userId}>");
+                        }
+                        else
+                        {
+                            await message.Channel.SendMessageAsync($"<@{userId}> :newspaper2: <@{userId2}>");
+                        }
                     }
                     else if (action == "smooch")
                     {
-                        await message.Channel.SendMessageAsync($":heart: <@{userId}> :kissing_heart: <@{userId2}> :heart:");
+                        if (userId2 == userIds.Luna)
+                        {
+                            await message.Channel.SendMessageAsync($">///< T-Thank you, <@{userId}>.");
+                        }
+                        else
+                        {
+                            await message.Channel.SendMessageAsync($":heart: <@{userId}> :kissing_heart: <@{userId2}> :heart:");
+                        }
                     }
                     else if (action == "boop")
                     {
-                        await message.Channel.SendMessageAsync($"<@{userId}> :point_right: <@{userId2}> *Boop*.");
+                        if (userId2 == userIds.Luna)
+                        {
+                            await message.Channel.SendMessageAsync($"*receives boop*");
+                        }
+                        else
+                        {
+                            await message.Channel.SendMessageAsync($"<@{userId}> :point_right: <@{userId2}> *Boop*.");
+                        }
                     }
                     else if (action == "punch")
                     {
-                        await message.Channel.SendMessageAsync($"<@{userId}> :right_facing_fist: :boom: <@{userId2}>");
+                        if (userId2 == userIds.Luna)
+                        {
+                            await message.Channel.SendMessageAsync($"no");
+
+                        }
+                        else
+                        {
+                            await message.Channel.SendMessageAsync($"<@{userId}> :right_facing_fist: :boom: <@{userId2}>");
+                        }
+                    }
+                    else if (action == "snug")
+                    {
+                        await message.Channel.SendMessageAsync($"AWWW!! <@{userId}> and <@{userId2}> are snuggling!!");
                     }
                     else
                     {
@@ -59,6 +97,7 @@ namespace LunaBot.Commands
                                                                 $"Smooch\n" +
                                                                 $"Boop\n" +
                                                                 $"Punch\n" +
+                                                                $"Snug" +
                                                                 $"```");
                     }
                 }
@@ -72,6 +111,7 @@ namespace LunaBot.Commands
                                                         $"Smooch\n" +
                                                         $"Boop\n" +
                                                         $"Punch\n" +
+                                                        $"Snug" +
                                                         $"```");
                 return;
 

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using LunaBot.ServerUtilities;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace LunaBot.Commands
 {
@@ -12,6 +14,15 @@ namespace LunaBot.Commands
     {
         public override async Task ProcessAsync(SocketMessage message, string[] parameters)
         {
+            UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
+
+            //check for the change_roles channel
+            if (!(message.Channel.Id == userIds.Change_Roles))
+            {
+                await message.Channel.SendMessageAsync($"Sorry, please use assign commands in <#{userIds.Change_Roles}>");
+                return;
+            }
+
             if (parameters.Length  == 0)
             {
                 Logger.Verbose(message.Author.Username, "Failed assign command");
@@ -32,7 +43,7 @@ namespace LunaBot.Commands
                 Predicate<SocketRole> roleFinder = (SocketRole sr) => { return sr.Name.ToLower() == roleName; };
                 SocketRole role = roles.Find(roleFinder);
                 
-                foreach (string ur in Unassignable.Roles)
+                foreach (string ur in userIds.Roles)
                 {
                     if (role.Name.ToLower() == ur.ToLower())
                     {
