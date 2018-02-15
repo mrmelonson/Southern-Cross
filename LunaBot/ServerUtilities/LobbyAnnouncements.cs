@@ -10,7 +10,10 @@ namespace LunaBot.ServerUtilities
     {
         private static IList<string> startupFlavorText = new List<string>()
         {
-            "The stars look beautiful tonight."
+            "The stars look beautiful tonight.",
+            "OwO",
+            ":eyes:",
+            "<:eyeblur:393979826882609152>"
         };
 
 

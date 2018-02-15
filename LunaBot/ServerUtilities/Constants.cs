@@ -11,7 +11,7 @@ using System.IO;
 /// </summary>
 namespace LunaBot.ServerUtilities
 {
-    /*internal static class UserIds
+    internal static class UserIds
     {
         /// <summary>
         /// Owners of the FR server
@@ -24,6 +24,8 @@ namespace LunaBot.ServerUtilities
             92466867364433920,
             //Doodles
             285606103243554816,
+            //rox
+            269785752748032000,
             //zelenyy
             284861595396472834
         };
@@ -34,24 +36,33 @@ namespace LunaBot.ServerUtilities
 
     internal static class Channels
     {
-        internal static ulong Lobby = 405676842335338503;
+        internal static ulong Lobby = 409717426159091725;
 
         internal static ulong BotLogs = 405676964515676161;
+
+        internal static ulong Change_Roles = 409721129515614210;
+
+        internal static ulong[] Staff_Channels =  { };
 
     }
 
     internal static class Guilds
     {
         /// ID for server
-        internal static ulong Guild = 405676842335338499;
+        internal static ulong Guild = 311366698538369025;
 
+    }
+
+    internal static class Roles
+    {
+        internal static string Muted = "Muted";
     }
 
     internal static class Unassignable
     {
         internal static string[] Roles =
         {
-            "mute"
+            "Muted"
         };
 
     } 
@@ -68,8 +79,8 @@ namespace LunaBot.ServerUtilities
 
         internal static OverwritePermissions mutePerm = new OverwritePermissions(PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Allow, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Allow, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny);
 
-    }*/
-
+    }
+    /*
     public class UserIds
     {
         public List<ulong> Mods { get; set; }
@@ -79,7 +90,7 @@ namespace LunaBot.ServerUtilities
         2. Noodles
         3. Rox
         4. Zelenyy
-         */
+         
         public ulong Luna { get; set; }
         public ulong Lobby { get; set; }
         public ulong Change_Roles { get; set; }
@@ -88,5 +99,5 @@ namespace LunaBot.ServerUtilities
         public List<string> Roles { get; set; }
         public string Muted { get; set; }
         public List<ulong> Staff_Channels { get; set; }
-    }
+    }*/
 }

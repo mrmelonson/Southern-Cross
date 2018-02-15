@@ -21,9 +21,7 @@ namespace LunaBot.ServerUtilities
 
         public static async Task MuteAsync(SocketTextChannel channel, SocketGuildUser user, int seconds)
         {
-            UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
-
-            if (user.Id == userIds.Luna)
+            if (user.Id == UserIds.Luna)
                 return;
 
             // Logging, telling the user, and announcing in server.
@@ -35,7 +33,7 @@ namespace LunaBot.ServerUtilities
             List<SocketRole> roles = channel.Guild.Roles.ToList();
 
             // Set mute role
-            muteFinder = (SocketRole sr) => {return sr.Name == userIds.Muted;};
+            muteFinder = (SocketRole sr) => {return sr.Name == Roles.Muted;};
             mute = roles.Find(muteFinder);
             await user.AddRoleAsync(mute);
 

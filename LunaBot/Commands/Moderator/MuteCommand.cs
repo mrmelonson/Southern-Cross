@@ -13,10 +13,8 @@ namespace LunaBot.Commands
     {
         public override async Task ProcessAsync(SocketMessage message, string[] parameters)
         {
-            UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
-
             ulong userId = message.Author.Id;
-            foreach(ulong mod in userIds.Mods)
+            foreach(ulong mod in UserIds.Mods)
             {
                 if (userId == mod)
                 {

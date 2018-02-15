@@ -79,13 +79,12 @@ namespace LunaBot
 
         private async Task ReadyAsync()
         {
-            UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
 
-            guild = client.GetGuild(userIds.Guild);
-            lobby = client.GetChannel(userIds.Lobby) as SocketTextChannel;
+            guild = client.GetGuild(Guilds.Guild);
+            lobby = client.GetChannel(Channels.Lobby) as SocketTextChannel;
             roles = guild.Roles.ToList();
             //report = new BotReporting(guild.GetChannel(Channels.BotLogs));
-            luna = guild.GetUser(userIds.Luna);
+            luna = guild.GetUser(UserIds.Luna);
 
 
             // Set Playing flavor text
@@ -101,9 +100,8 @@ namespace LunaBot
         {
             try
             {
-                UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
                 // Log Message
-                foreach(ulong x in userIds.Staff_Channels)
+                foreach(ulong x in Channels.Staff_Channels)
                 {
                     if (message.Channel.Id == x) { return;  }
                 }
@@ -122,6 +120,7 @@ namespace LunaBot
                 {
                     // Commands
                     string messageText = message.Content;
+                    messageText = messageText.ToLower();
 
                     if (messageText.StartsWith("k"))
                     {

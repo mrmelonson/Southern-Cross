@@ -5,8 +5,6 @@ using LunaBot.ServerUtilities;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using System.IO;
 
 namespace LunaBot.Commands
 {
@@ -15,11 +13,10 @@ namespace LunaBot.Commands
     {
         public override async Task ProcessAsync(SocketMessage message, string[] parameters)
         {
-            UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
             ulong userId = message.Author.Id;
             SocketUser user = message.Author;
 
-            foreach (ulong mod in userIds.Mods)
+            foreach (ulong mod in UserIds.Mods)
             {
                 if (userId == mod)
                 {

@@ -3,8 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Discord.WebSocket;
 using LunaBot.ServerUtilities;
-using Newtonsoft.Json;
-using System.IO;
+
 
 namespace LunaBot.Commands
 {
@@ -13,14 +12,13 @@ namespace LunaBot.Commands
     {
         public override async Task ProcessAsync(SocketMessage message, string[] parameters)
         {
-            UserIds userIds = JsonConvert.DeserializeObject<UserIds>(File.ReadAllText(@"C:\Constants.json"));
-
             ulong userId = message.Author.Id;
             ulong userId2;
 
             if (message.MentionedUsers.Count > 0)
             {
                 string action = parameters[0];
+                action = action.ToLower();
                 action.ToLower();
 
                 userId2 = message.MentionedUsers.FirstOrDefault().Id;
@@ -41,7 +39,7 @@ namespace LunaBot.Commands
                     }
                     if (action == "bap")
                     {
-                        if (userId2 == userIds.Luna)
+                        if (userId2 == UserIds.Luna)
                         {
                             await message.Channel.SendMessageAsync($">:V <@{userId2}> :newspaper2: <@{userId}>");
                         }
@@ -52,7 +50,7 @@ namespace LunaBot.Commands
                     }
                     else if (action == "smooch")
                     {
-                        if (userId2 == userIds.Luna)
+                        if (userId2 == UserIds.Luna)
                         {
                             await message.Channel.SendMessageAsync($">///< T-Thank you, <@{userId}>.");
                         }
@@ -63,7 +61,7 @@ namespace LunaBot.Commands
                     }
                     else if (action == "boop")
                     {
-                        if (userId2 == userIds.Luna)
+                        if (userId2 == UserIds.Luna)
                         {
                             await message.Channel.SendMessageAsync($"*receives boop*");
                         }
@@ -74,7 +72,7 @@ namespace LunaBot.Commands
                     }
                     else if (action == "punch")
                     {
-                        if (userId2 == userIds.Luna)
+                        if (userId2 == UserIds.Luna)
                         {
                             await message.Channel.SendMessageAsync($"no");
 
