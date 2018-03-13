@@ -35,6 +35,8 @@ namespace LunaBot.Commands
                     }
 
                     await message.Channel.SendMessageAsync(string.Format("I rolled {0} and got {1}", p, sum));
+
+                    return;
                 }
                 catch (Exception e)
                 {
@@ -44,6 +46,11 @@ namespace LunaBot.Commands
                     return;
                 }
             }
+
+            await message.Channel.SendMessageAsync("Invalid roll, roll must be of the form [# of sides]d[# of dice]");
+            Logger.Verbose(message.Author.Username, "Has failed roll command");
+
+            return;
         }
     }
 }

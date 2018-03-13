@@ -18,16 +18,29 @@ namespace LunaBot.ServerUtilities
         /// </summary>
         internal static ulong[] Mods =
         {
+            /*
+            BOSS
+            */
             //Hellblaze Wolf
             180623286747660288,
-            //Fireflash
-            92466867364433920,
+
+            /*
+            MODERATORS
+            */
             //Doodles
             285606103243554816,
             //rox
             269785752748032000,
+            //ana
+            72949258646458368,
+
+            /*
+            HELPERS
+            */
             //zelenyy
-            284861595396472834
+            284861595396472834,
+            //gloomy
+            394977996676792320
         };
 
         internal static ulong Luna = 405679003740012565;
@@ -36,13 +49,14 @@ namespace LunaBot.ServerUtilities
 
     internal static class Channels
     {
+        //lobby is actually "botspam"
         internal static ulong Lobby = 409717426159091725;
-
+        //not used
         internal static ulong BotLogs = 405676964515676161;
-
+        //change roles
         internal static ulong Change_Roles = 409721129515614210;
-
-        internal static ulong[] Staff_Channels =  { };
+        //staff channels
+        internal static ulong[] Staff_Channels = { };
 
     }
 

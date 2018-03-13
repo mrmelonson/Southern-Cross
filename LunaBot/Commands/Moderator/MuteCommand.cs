@@ -27,6 +27,13 @@ namespace LunaBot.Commands
                         return;
                     }
 
+                    if (parameters.Length == 1)
+                    {
+                        await MuteUserHelper.MuteAsync(message.Channel as SocketTextChannel, message.MentionedUsers.FirstOrDefault() as SocketGuildUser, 0);
+
+                        return;
+                    }
+
                     if (parameters.Length < 2)
                     {
                         Logger.Warning(message.Author.Username, "Failed timout command. Time given.");
