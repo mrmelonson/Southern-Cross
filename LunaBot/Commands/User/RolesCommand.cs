@@ -21,12 +21,14 @@ namespace LunaBot.Commands
             SocketUser user = message.Author;
             commands.Add("***ROLES***");
             commands.Add("**===Countries===**");
-            commands.Add("```Australia\n" +
+            commands.Add("```\n" +
+                         "Australia\n" +
                          "Zealand\n" +
                         "International```");
 
             commands.Add("**==States (for AUS)==**");
-            commands.Add("```QLD\n" +
+            commands.Add("```\n" +
+                         "QLD\n" +
                          "NSW\n" +
                          "ACT\n" +
                          "VIC\n" +
@@ -36,16 +38,19 @@ namespace LunaBot.Commands
                          "NT```");
 
             commands.Add("**===Sexuality===**");
-            commands.Add("```Bi\n" +
+            commands.Add("```\n" +
+                         "Bi\n" +
                          "Straight\n" +
                          "Gay```");
 
             commands.Add("**===Pref (for Bi)===**");
-            commands.Add("```Male Preference\n" +
+            commands.Add("```\n" +
+                         "Male Preference\n" +
                          "Female Preference```");
 
             commands.Add("**===Genders===**");
-            commands.Add("```Unspecified Gender\n" +
+            commands.Add("```\n" +
+                         "Unspecified Gender\n" +
                          "Trans\n" +
                          "Male\n" +
                          "Female\n" +
@@ -53,17 +58,19 @@ namespace LunaBot.Commands
                          "Androgynous```");
 
             commands.Add("**===DM Roles===**");
-            commands.Add("```DM Friendly\n" +
+            commands.Add("```\n" +
+                         "DM Friendly\n" +
                          "DM Unfriendly\n" +
                          "DM Request```");
 
             commands.Add("**===Artist Roles===-**");
-            commands.Add("```Artist\n" +
+            commands.Add("```\n" +
+                         "Artist\n" +
                          "Commissions Open\n" +
                          "Commissions Closed```");
 
             commands.Add("**===Species Roles===**");
-            commands.Add("```");
+            commands.Add("```\n");
             foreach(string role in Species.Roles)
             {
                 commands.Add(role);
