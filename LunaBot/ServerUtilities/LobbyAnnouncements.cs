@@ -13,7 +13,8 @@ namespace LunaBot.ServerUtilities
             "The stars look beautiful tonight.",
             "OwO",
             ":eyes:",
-            "<:eyeblur:393979826882609152>"
+            "<:eyeblur:393979826882609152>",
+            ":eyes: :lips: :eyes:"
         };
 
 

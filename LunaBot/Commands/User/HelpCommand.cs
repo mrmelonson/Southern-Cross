@@ -44,6 +44,8 @@ namespace LunaBot.Commands
                 "```kassign [role]```");
             commands.Add("Remove roles:\n" +
                 "```kremove [role]```");
+            commands.Add("List roles:\n" +
+                "```kroles```");
             commands.Add("Roll Command:\n" +
                 "```kroll [Amount of dice]d[Amount of sides]\n" +
                 "E.g. kroll 1d6```");

@@ -25,10 +25,14 @@ namespace LunaBot.ServerUtilities
             180623286747660288,
 
             /*
-            MODERATORS
+            Admins
             */
             //Doodles
             285606103243554816,
+
+            /*
+            MODERATORS
+            */
             //rox
             269785752748032000,
             //ana
@@ -40,7 +44,9 @@ namespace LunaBot.ServerUtilities
             //zelenyy
             284861595396472834,
             //gloomy
-            394977996676792320
+            394977996676792320,
+            //Boz
+            164204053226586112
         };
 
         internal static ulong Luna = 405679003740012565;
@@ -79,7 +85,15 @@ namespace LunaBot.ServerUtilities
             "Muted"
         };
 
-    } 
+    }
+
+    internal static class Species
+    {
+        internal static string[] Roles =
+        {
+            "Alsatian","Badger","Blue Heeler","Boer Goat","Cat","Cheetah","Deer","Dragon","Dragon-cat","Duck","Dutch Angel Dragon","Fae Wolf","Fox","Goat (Unspecified)","Gryphon","Hellhound","Husky","Kangaroo","Kitsune","Lion","Lynx","Octopus","Otter","Pokemon","Protogen","Rat","Robo-liz","Scalie","Sergal","Shark","Shiba","Tabby Cat","Tasmanian Devil","Tiger","Timber Wolf","Utahraptor","Wolf","Wolf-Dog"
+        };
+    }
 
     internal static class Permissions
     {
@@ -94,24 +108,5 @@ namespace LunaBot.ServerUtilities
         internal static OverwritePermissions mutePerm = new OverwritePermissions(PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Allow, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Allow, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny, PermValue.Deny);
 
     }
-    /*
-    public class UserIds
-    {
-        public List<ulong> Mods { get; set; }
-        /*
-        0. Hellblaze
-        1. Flash
-        2. Noodles
-        3. Rox
-        4. Zelenyy
-         
-        public ulong Luna { get; set; }
-        public ulong Lobby { get; set; }
-        public ulong Change_Roles { get; set; }
-        public ulong Staff_spam { get; set; }
-        public ulong Guild { get; set; }
-        public List<string> Roles { get; set; }
-        public string Muted { get; set; }
-        public List<ulong> Staff_Channels { get; set; }
-    }*/
+    
 }
