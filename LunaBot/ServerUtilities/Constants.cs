@@ -37,16 +37,16 @@ namespace LunaBot.ServerUtilities
             269785752748032000,
             //ana
             72949258646458368,
+            //Boz
+            164204053226586112,
 
             /*
             HELPERS
             */
             //zelenyy
             284861595396472834,
-            //gloomy
-            394977996676792320,
-            //Boz
-            164204053226586112
+            //ura
+            416586444404948993
         };
 
         internal static ulong Luna = 405679003740012565;

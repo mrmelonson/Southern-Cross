@@ -126,7 +126,7 @@ namespace LunaBot
                     {
                         ProcessCommandAsync(message).ConfigureAwait(false);
                     }
-                    else
+                    else 
                     {
                         return;
                     }

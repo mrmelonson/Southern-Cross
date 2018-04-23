@@ -81,7 +81,7 @@ namespace LunaBot.Commands
             try
             {
                 await user.SendMessageAsync(string.Join('\n', commands));
-                await message.Channel.SendMessageAsync($"<@{userId}>, I have sent you your available commands.");
+                await message.Channel.SendMessageAsync($"<@{userId}>, I have sent you your role list.");
             }
             catch (Exception e)
             {
