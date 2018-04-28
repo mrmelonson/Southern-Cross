@@ -30,11 +30,13 @@ namespace LunaBot.Commands
                     commands.Add("Mute:\n" +
                         "```kmute [user] [time (in seconds)]```");
                     commands.Add("Mute without timer:\n" +
-                        "```kmute [user] 0```");
+                        "```kmute [user]```");
                     commands.Add("Message purge:\n" +
                         "```kpurge [amount]```");
                     commands.Add("Unmute:\n" +
                         "```kunmute [user]```");
+                    commands.Add("Kick for inactivity:\n" +
+                        "```kinactive [user]```");
                 }
             }
 

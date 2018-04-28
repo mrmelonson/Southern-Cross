@@ -11,18 +11,13 @@ namespace LunaBot.ServerUtilities
     {
         private static IList<string> kickFlavorText = new List<string>()
         {
-            "{0} bit the dust",
-            "lol gay, kicked {0}",
-            "Critical hit! {0} has been kicked!",
-            "I cast purge on {0}! Begone demon!",
-            "2 to the 1 to the 3, {0} has been kicked and you can't disagree!",
-            "The last of the {0} has been ~~slain~~ kicked."
+            "{0} has been kicked for inactivity."
         };
 
 
         public static async System.Threading.Tasks.Task KickAsync(SocketTextChannel channel, SocketGuildUser user)
         {
-            if (user.Id == 333285108402487297)
+            if (user.Id == UserIds.Luna)
                 return;
 
             Logger.Info("System", $"Kicking {user.Username}");
@@ -30,9 +25,9 @@ namespace LunaBot.ServerUtilities
             try
             {
                 await user.SendMessageAsync("You have been kicked from the server from inactivity.\n" +
-                    "You can join again but once you get kicked 3 times will be banned.\n" +
-                    "*Hint: Prevent getting kicked by being part of the community.*\n" +
-                    "https://discord.gg/J4c8wKg");
+                    "You can join again but once you get kicked 3 times you will be banned.\n" +
+                    "*Hint: respond to pings and we will let you in*\n" +
+                    "https://discord.gg/tY8xfJ");
             }
 #pragma warning disable CS0168 // Variable is declared but never used
             catch (HttpException e)
@@ -43,7 +38,7 @@ namespace LunaBot.ServerUtilities
 
             Random r = new Random();
             
-            await user.KickAsync("Purged for inactivity");
+            await user.KickAsync("Kicked for inactivity");
             await channel.SendMessageAsync(String.Format(kickFlavorText[r.Next(kickFlavorText.Count)], user.Username));
         }
     }
