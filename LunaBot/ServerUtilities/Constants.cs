@@ -63,6 +63,8 @@ namespace LunaBot.ServerUtilities
         internal static ulong Change_Roles = 409721129515614210;
         //staff channels
         internal static ulong[] Staff_Channels = { };
+        //mute channel
+        internal static ulong Mute_channel = 409717972144357385;
 
     }
 
@@ -76,6 +78,7 @@ namespace LunaBot.ServerUtilities
     internal static class Roles
     {
         internal static string Muted = "Muted";
+        internal static string NSFW = "NSFW";
     }
 
     internal static class Unassignable

@@ -28,7 +28,7 @@ namespace LunaBot.Commands
                     commands.Add("**Moderation Commands**");
 
                     commands.Add("Mute:\n" +
-                        "```kmute [user] [time (in seconds)]```");
+                        "```kmute [user] [time (in minutes)]```");
                     commands.Add("Mute without timer:\n" +
                         "```kmute [user]```");
                     commands.Add("Message purge:\n" +
