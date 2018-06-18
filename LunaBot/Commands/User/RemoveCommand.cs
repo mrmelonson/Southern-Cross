@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using LunaBot.ServerUtilities;
-using System.IO;
-using Newtonsoft.Json;
 
 namespace LunaBot.Commands
 {

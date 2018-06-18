@@ -79,13 +79,20 @@ namespace LunaBot.ServerUtilities
     {
         internal static string Muted = "Muted";
         internal static string NSFW = "NSFW";
+        internal static ulong ModeratorID = 458180213386248202;
+        internal static ulong HelperID = 458180213386248202;
+        internal static ulong BossID = 458180213386248202;
+        internal static ulong AdminID = 458180213386248202;
+
     }
 
     internal static class Unassignable
     {
         internal static string[] Roles =
         {
-            "Muted"
+            "Muted",
+            "NSFW",
+            "NSFW (Bara)"
         };
 
     }
@@ -94,8 +101,16 @@ namespace LunaBot.ServerUtilities
     {
         internal static string[] Roles =
         {
-            "Alsatian","Badger","Blue Heeler","Boer Goat","Cat","Cheetah","Deer","Dragon","Dragon-cat","Duck","Dutch Angel Dragon","Fae Wolf","Fox","Goat (Unspecified)","Gryphon","Hellhound","Husky","Kangaroo","Kitsune","Lion","Lynx","Octopus","Otter","Pokemon","Protogen","Rat","Robo-liz","Scalie","Sergal","Shark","Shiba","Tabby Cat","Tasmanian Devil","Tiger","Timber Wolf","Utahraptor","Wolf","Wolf-Dog"
+            "Alsatian","Astral Wolf","Avian","Badger","Bear","Blue Heeler","Bluejay","Boer Goat","Cat","Cheetah","Cockatiel","Cow","Deer","Dog","Dragon","Dragon-cat","Duck","Dutch Angel Dragon","Fae Wolf","Fox","Goat (Unspecified)","Gryphon","Hellhound","Husky","Hyena","Kangaroo","KayNine-Tiger","Kitsune","Lion","Lynx","Maned Wolf","Mouse","Octopus","Otter","Pig","Pokemon","Protogen","Rabbit","Rat","Red Panda","Robo-liz","Scalie","Sergal","Sharks","Sheep","Shiba Inu","Shibe","Snake","Sugar Glider","Tabby Cat","Tasmanian Devil","Tiger","Timber Wolf","Utahraptor","Werewolf","Wolf","Wolf-Dog"
         };
+    }
+
+    internal static class Info
+    {
+        internal static string VersionNum = "1.01.00";
+        internal static string Creator = "Zelenyy";
+        internal static string BaseCodeMaker = "Haby001";
+        internal static string GitHub = "https://github.com/mrmelonson/Southern-Cross";
     }
 
     internal static class Permissions

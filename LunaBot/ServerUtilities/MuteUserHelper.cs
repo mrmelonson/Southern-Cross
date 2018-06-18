@@ -41,17 +41,22 @@ namespace LunaBot.ServerUtilities
 
             Predicate<SocketRole> muteFinder;
             Predicate<SocketRole> nsfwFinder;
+            Predicate<SocketRole> nsfwBaraFinder;
             SocketRole nsfw;
             SocketRole mute;
+            SocketRole nsfwBara;
             List<SocketRole> roles = channel.Guild.Roles.ToList();
 
             // Set mute role
             muteFinder = (SocketRole sr) => {return sr.Name == Roles.Muted;};
             nsfwFinder = (SocketRole sr) => { return sr.Name == Roles.NSFW; };
+            nsfwBaraFinder = (SocketRole sr) => { return sr.Name == Roles.NSFW; };
             nsfw = roles.Find(nsfwFinder);
             mute = roles.Find(muteFinder);
+            nsfwBara = roles.Find(nsfwBaraFinder);
             await user.AddRoleAsync(mute);
             await user.RemoveRoleAsync(nsfw);
+            await user.RemoveRoleAsync(nsfwBara);
 
             if (seconds != 0)
             {

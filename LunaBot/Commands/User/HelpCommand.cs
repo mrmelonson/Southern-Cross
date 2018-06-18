@@ -21,23 +21,21 @@ namespace LunaBot.Commands
             ulong userId = message.Author.Id;
             SocketUser user = message.Author;
 
-            foreach (ulong users in UserIds.Mods)
+            if (IsModeratorHelper.IsModerator(message.Author as SocketGuildUser))
             {
-                if (userId == users)
-                {
-                    commands.Add("**Moderation Commands**");
+                commands.Add("**Moderation Commands**");
 
-                    commands.Add("Mute:\n" +
-                        "```kmute [user] [time (in minutes)]```");
-                    commands.Add("Mute without timer:\n" +
-                        "```kmute [user]```");
-                    commands.Add("Message purge:\n" +
-                        "```kpurge [amount]```");
-                    commands.Add("Unmute:\n" +
-                        "```kunmute [user]```");
-                    commands.Add("Kick for inactivity:\n" +
-                        "```kinactive [user]```");
-                }
+                commands.Add("Mute:\n" +
+                    "```kmute [user] [time (in minutes)]```");
+                commands.Add("Mute without timer:\n" +
+                    "```kmute [user]```");
+                commands.Add("Message purge:\n" +
+                    "```kpurge [amount]```");
+                commands.Add("Unmute:\n" +
+                    "```kunmute [user]```");
+                commands.Add("Kick for inactivity:\n" +
+                    "```kinactive [user]```");
+
             }
 
             commands.Add("**User Commands**");
@@ -55,6 +53,8 @@ namespace LunaBot.Commands
                 "```kaction [action] [user]```");
             commands.Add("Ping:\n" +
                 "```kping```");
+            commands.Add("Infomation :\n" +
+                "```kinfo```");
             try
             {
                 await user.SendMessageAsync(string.Join('\n', commands));

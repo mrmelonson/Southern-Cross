@@ -14,60 +14,61 @@ namespace LunaBot.Commands
         {
 
             ulong userId = message.Author.Id;
-            foreach (ulong mod in UserIds.Mods)
+            if (IsModeratorHelper.IsModerator(message.Author as SocketGuildUser))
             {
-                if (userId == mod)
+                // Check if command params are correct.
+                if (parameters.Length != 1)
                 {
-                    // Check if command params are correct.
-                    if (parameters.Length != 1)
-                    {
-                        Logger.Verbose(message.Author.Username, "Failed unmute command");
-                        await message.Channel.SendMessageAsync("Error: Wrong syntax, try kunmute [user].");
-
-                        return;
-                    }
-
-                    // Check if user attached is correct.
-                    if (message.MentionedUsers.Count() == 0)
-                    {
-                        Logger.Verbose(message.Author.Username, "Failed unmute command");
-                        await message.Channel.SendMessageAsync($"Error: No user mentioned, try kunmute [user].");
-
-                        return;
-                    }
-
-                    ulong user = message.MentionedUsers.FirstOrDefault().Id;
-                    ulong author = message.Author.Id;
-
-                    SocketGuildChannel guildChannel = message.Channel as SocketGuildChannel;
-                    List<SocketRole> roles = guildChannel.Guild.Roles.ToList();
-
-                    try
-                    {
-                        Predicate<SocketRole> roleFinder = (SocketRole sr) => { return sr.Name == Roles.Muted; };
-                        SocketRole role = roles.Find(roleFinder);
-
-                        SocketGuildUser usersock = guildChannel.GetUser((ulong)user);
-
-                        await guildChannel.GetUser((ulong)user).RemoveRoleAsync(role);
-
-                        await message.Channel.SendMessageAsync($"<@{user}>, You have been unmuted.");
-                        Logger.Warning(usersock.Username, $"Has been unmuted");
-                    }
-                    catch (Exception e)
-                    {
-                        await message.Channel.SendMessageAsync($"<@{author}>, Sorry, either you mis-spelt the role or i dont have permission to remove that role.");
-                        Logger.Warning(message.Author.Username, $"Command failed: {e.Message}");
-                    }
+                    Logger.Verbose(message.Author.Username, "Failed unmute command");
+                    await message.Channel.SendMessageAsync("Error: Wrong syntax, try kunmute [user].");
 
                     return;
                 }
+
+                // Check if user attached is correct.
+                if (message.MentionedUsers.Count() == 0)
+                {
+                    Logger.Verbose(message.Author.Username, "Failed unmute command");
+                    await message.Channel.SendMessageAsync($"Error: No user mentioned, try kunmute [user].");
+
+                    return;
+                }
+
+                ulong user = message.MentionedUsers.FirstOrDefault().Id;
+                ulong author = message.Author.Id;
+
+                SocketGuildChannel guildChannel = message.Channel as SocketGuildChannel;
+                List<SocketRole> roles = guildChannel.Guild.Roles.ToList();
+
+                try
+                {
+                    Predicate<SocketRole> roleFinder = (SocketRole sr) => { return sr.Name == Roles.Muted; };
+                    SocketRole role = roles.Find(roleFinder);
+
+                    SocketGuildUser usersock = guildChannel.GetUser((ulong)user);
+
+                    await guildChannel.GetUser((ulong)user).RemoveRoleAsync(role);
+
+                    await message.Channel.SendMessageAsync($"<@{user}>, You have been unmuted.");
+                    Logger.Warning(usersock.Username, $"Has been unmuted");
+                }
+                catch (Exception e)
+                {
+                    await message.Channel.SendMessageAsync($"<@{author}>, Sorry, either you mis-spelt the role or i dont have permission to remove that role.");
+                    Logger.Warning(message.Author.Username, $"Command failed: {e.Message}");
+                }
+
+                return;
+
             }
+            else
+            {
 
-            Logger.Warning(message.Author.Username, "Tried to use unmute command");
-            await message.Channel.SendMessageAsync("Sorry you do not have permission to use this command");
+                Logger.Warning(message.Author.Username, "Tried to use unmute command");
+                await message.Channel.SendMessageAsync("Sorry you do not have permission to use this command");
 
-            return;
+                return;
+            }
         }
     }
 }

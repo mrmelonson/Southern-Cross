@@ -14,29 +14,29 @@ namespace LunaBot.Commands
         public override async Task ProcessAsync(SocketMessage message, string[] parameters)
         {
             ulong userId = message.Author.Id;
-            foreach (ulong mod in UserIds.Mods)
+            if (IsModeratorHelper.IsModerator(message.Author as SocketGuildUser))
             {
-                if (userId == mod)
+                // Sanity check
+                if (message.MentionedUsers.Count == 0)
                 {
-                    // Sanity check
-                    if (message.MentionedUsers.Count == 0)
-                    {
-                        Logger.Warning(message.Author.Username, "Failed inactive command. No mentioned user.");
-                        await message.Channel.SendMessageAsync("No mentioned user. kinactive [user]");
-
-                        return;
-                    }
-
-                    await KickUserHelper.KickAsync(message.Channel as SocketTextChannel, message.MentionedUsers.FirstOrDefault() as SocketGuildUser);
+                    Logger.Warning(message.Author.Username, "Failed inactive command. No mentioned user.");
+                    await message.Channel.SendMessageAsync("No mentioned user. kinactive [user]");
 
                     return;
                 }
+
+                await KickUserHelper.KickAsync(message.Channel as SocketTextChannel, message.MentionedUsers.FirstOrDefault() as SocketGuildUser);
+
+                return;
+
             }
+            else
+            {
+                Logger.Warning(message.Author.Username, "Tried to use inactive command");
+                await message.Channel.SendMessageAsync("Sorry you do not have permission to use this command");
 
-            Logger.Warning(message.Author.Username, "Tried to use inactive command");
-            await message.Channel.SendMessageAsync("Sorry you do not have permission to use this command");
-
-            return;
+                return;
+            }
         }
 
     }
