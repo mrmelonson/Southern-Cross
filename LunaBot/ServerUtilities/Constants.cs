@@ -79,10 +79,10 @@ namespace LunaBot.ServerUtilities
     {
         internal static string Muted = "Muted";
         internal static string NSFW = "NSFW";
-        internal static ulong ModeratorID = 458180213386248202;
-        internal static ulong HelperID = 458180213386248202;
-        internal static ulong BossID = 458180213386248202;
-        internal static ulong AdminID = 458180213386248202;
+        internal static ulong ModeratorID = 311408378968539136;
+        internal static ulong HelperID = 410422032774332416;
+        internal static ulong BossID = 311369512437940224;
+        internal static ulong AdminID = 311408039469252608;
 
     }
 
@@ -107,7 +107,7 @@ namespace LunaBot.ServerUtilities
 
     internal static class Info
     {
-        internal static string VersionNum = "1.01.00";
+        internal static string VersionNum = "1.01.01";
         internal static string Creator = "Zelenyy";
         internal static string BaseCodeMaker = "Haby001";
         internal static string GitHub = "https://github.com/mrmelonson/Southern-Cross";

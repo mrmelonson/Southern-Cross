@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
+using LunaBot.ServerUtilities;
 
 namespace LunaBot.ServerUtilities
 {
@@ -15,7 +16,6 @@ namespace LunaBot.ServerUtilities
     {
         public static bool IsModerator(SocketGuildUser user)
         {
-            
             List<SocketRole> roles = user.Roles.ToList();
 
             foreach (SocketRole role in roles)
