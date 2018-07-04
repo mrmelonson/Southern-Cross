@@ -19,12 +19,30 @@ namespace LunaBot.ServerUtilities
         };
 
 
-        public static async Task MuteAsync(SocketTextChannel channel, SocketGuildUser user, int seconds)
+        public static async Task MuteAsync(SocketTextChannel channel, SocketGuildUser user, int time, char timeindicator)
         {
             if (user.Id == UserIds.Luna)
                 return;
 
-            // Logging, telling the user, and announcing in server.
+            int multiplier = 0;
+            string timestr;
+
+            switch (timeindicator)
+            {
+                case ('s'):
+                    multiplier = 1000;
+                    timestr = "seconds";
+                    break;
+                case ('m'):
+                    multiplier = 60000;
+                    timestr = "minutes";
+                    break;
+                default:
+                    multiplier = 3600000;
+                    timestr = "hours";
+                    break;
+            }
+
             Random r = new Random();
             await channel.SendMessageAsync(String.Format(kickFlavorText[r.Next(kickFlavorText.Count)], user.Username));
 
@@ -58,23 +76,24 @@ namespace LunaBot.ServerUtilities
             await user.RemoveRoleAsync(nsfw);
             await user.RemoveRoleAsync(nsfwBara);
 
-            if (seconds != 0)
+
+
+            if (time != 0)
             {
                 try
                 {
-                    await user.SendMessageAsync($"You have been muted for {seconds} minutes");
+                    await user.SendMessageAsync($"You have been muted for {time} {timestr}.");
                 }
                 catch (Exception e)
                 {
                     Logger.Warning(user.Username, e.Message);
-                    await channel.SendMessageAsync($"<@{user.Id}> you block DMs, you have been muted for {seconds} minutes");
-                    Logger.Info("System", $"Muting {user.Username}, for {seconds} minutes");
+                    Logger.Info("System", $"Muting {user.Username}, for {time} {timestr}");
                 }
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                     Task.Run(async () =>
                     {
-                        Thread.Sleep(seconds * 60000);
+                        Thread.Sleep(time * multiplier);
                         if (user.Roles.Contains(mute))
                         {
                             await channel.SendMessageAsync($"<@{user.Id}>, You have been unmuted. Welcome back.");

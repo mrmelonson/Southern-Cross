@@ -107,7 +107,7 @@ namespace LunaBot.ServerUtilities
 
     internal static class Info
     {
-        internal static string VersionNum = "1.01.01";
+        internal static string VersionNum = "1.01.03";
         internal static string Creator = "Zelenyy";
         internal static string BaseCodeMaker = "Haby001";
         internal static string GitHub = "https://github.com/mrmelonson/Southern-Cross";
