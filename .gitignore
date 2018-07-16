@@ -9,3 +9,9 @@ packages
 /.vs/LunaBot/v15/sqlite3
 /.vs/LunaBot/v15/Server/sqlite3
 log.txt
+.vs/LunaBot/DesignTimeBuild/.dtbcache
+LunaBot/LunaBot.csproj
+*.csproj
+LunaBot/LunaBot.csproj
+LunaBot/StringTable.Designer.cs
+LunaBot/StringTable - Copy.Designer.cs

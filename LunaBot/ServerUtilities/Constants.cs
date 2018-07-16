@@ -13,9 +13,8 @@ namespace LunaBot.ServerUtilities
 {
     internal static class UserIds
     {
-        /// <summary>
-        /// Owners of the FR server
-        /// </summary>
+        // Obselete code
+        // Keep just in case
         internal static ulong[] Mods =
         {
             /*
@@ -91,8 +90,7 @@ namespace LunaBot.ServerUtilities
         internal static string[] Roles =
         {
             "Muted",
-            "NSFW",
-            "NSFW (Bara)"
+            "NSFW"
         };
 
     }
@@ -101,13 +99,13 @@ namespace LunaBot.ServerUtilities
     {
         internal static string[] Roles =
         {
-            "Alsatian","Astral Wolf","Avian","Badger","Bear","Blue Heeler","Bluejay","Boer Goat","Cat","Cheetah","Cockatiel","Cow","Deer","Dog","Dragon","Dragon-cat","Duck","Dutch Angel Dragon","Fae Wolf","Fox","Goat (Unspecified)","Gryphon","Hellhound","Husky","Hyena","Kangaroo","KayNine-Tiger","Kitsune","Lion","Lynx","Maned Wolf","Mouse","Octopus","Otter","Pig","Pokemon","Protogen","Rabbit","Rat","Red Panda","Robo-liz","Scalie","Sergal","Sharks","Sheep","Shiba Inu","Shibe","Snake","Sugar Glider","Tabby Cat","Tasmanian Devil","Tiger","Timber Wolf","Utahraptor","Werewolf","Wolf","Wolf-Dog"
+            "Alsatian","Astral Wolf","Avian","Badger","Bat","Bear","Blue Heeler","Bluejay","Boer Goat","Cat","Cheetah","Cockatiel","Cow","Deer","Dog","Dragon","Dragon-cat","Duck","Dutch Angel Dragon","Fae Wolf","Fox","Goat (Unspecified)","Gryphon","Hellhound","Husky","Hyena","Kangaroo","KayNine-Tiger","Kitsune","Lemur","Lion","Lizard","Lynx","Maned Wolf","Mouse","Octopus","Otter","Owl","Pig","Pokemon","Protogen","Rabbit","Rat","Red Panda","Robo-liz","Sabertooth","Scalie","Sergal","Shark","Sheep","Shiba Inu","Shibe","Snake","Spotted Eagle Ray","Sugar Glider","Tabby Cat","Tasmanian Devil","Tiger","Timber Wolf","Utahraptor","Werewolf","Wolf","Wolf-Dog","Wombat";
         };
     }
 
     internal static class Info
     {
-        internal static string VersionNum = "1.01.01";
+        internal static string VersionNum = "1.01.02";
         internal static string Creator = "Zelenyy";
         internal static string BaseCodeMaker = "Haby001";
         internal static string GitHub = "https://github.com/mrmelonson/Southern-Cross";

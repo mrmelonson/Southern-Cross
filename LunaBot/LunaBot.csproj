@@ -36,17 +36,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="SecretStrings.Designer.cs">
+    <Compile Update="SecretStings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>SecretStrings.resx</DependentUpon>
+      <DependentUpon>SecretStings.resx</DependentUpon>
     </Compile>
     <Compile Update="SecretStrings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>SecretStrings.resx</DependentUpon>
     </Compile>
-    <Compile Update="StringTable.Designer.cs">
+    <Compile Update="SecretStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SecretStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="StringTable - Copy.Designer.cs">
+      <DependentUpon>StringTable.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="StringTable - Copy.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>StringTable.resx</DependentUpon>
@@ -54,6 +64,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="SecretStings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SecretStings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="SecretStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
@@ -64,7 +78,7 @@
     </EmbeddedResource>
     <EmbeddedResource Update="StringTable.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>StringTable.Designer.cs</LastGenOutput>
+      <LastGenOutput>StringTable - Copy.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
