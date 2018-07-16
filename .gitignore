@@ -15,3 +15,4 @@ LunaBot/LunaBot.csproj
 LunaBot/LunaBot.csproj
 LunaBot/StringTable.Designer.cs
 LunaBot/StringTable - Copy.Designer.cs
+*.csproj
