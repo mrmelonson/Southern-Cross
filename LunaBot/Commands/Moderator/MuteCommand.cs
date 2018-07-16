@@ -14,6 +14,8 @@ namespace LunaBot.Commands
         public override async Task ProcessAsync(SocketMessage message, string[] parameters)
         {
             ulong userId = message.Author.Id;
+            char timeindicator = 'h';
+            string toparse = "0";
             if (IsModeratorHelper.IsModerator(message.Author as SocketGuildUser))
             {
                 // Sanity check
@@ -27,7 +29,7 @@ namespace LunaBot.Commands
 
                 if (parameters.Length == 1)
                 {
-                    await MuteUserHelper.MuteAsync(message.Channel as SocketTextChannel, message.MentionedUsers.FirstOrDefault() as SocketGuildUser, 0);
+                    await MuteUserHelper.MuteAsync(message.Channel as SocketTextChannel, message.MentionedUsers.FirstOrDefault() as SocketGuildUser, 0, 'h');
 
                     return;
                 }
@@ -40,7 +42,19 @@ namespace LunaBot.Commands
                     return;
                 }
 
-                if (!int.TryParse(parameters[1], out int seconds))
+                foreach (char letter in parameters[1])
+                {
+                    if (!(char.IsNumber(letter)))
+                    {
+                        timeindicator = letter;
+                    } else
+                    {
+                        toparse = toparse + letter.ToString();
+                    }
+                    
+                }
+
+                if (!int.TryParse(toparse, out int time))
                 {
                     Logger.Warning(message.Author.Username, "Failed timout command. Time for timout failed.");
                     await message.Channel.SendMessageAsync("Time requested not a number. kmute [user] [time]");
@@ -48,7 +62,7 @@ namespace LunaBot.Commands
                     return;
                 }
 
-                await MuteUserHelper.MuteAsync(message.Channel as SocketTextChannel, message.MentionedUsers.FirstOrDefault() as SocketGuildUser, seconds);
+                await MuteUserHelper.MuteAsync(message.Channel as SocketTextChannel, message.MentionedUsers.FirstOrDefault() as SocketGuildUser, time, timeindicator);
 
                 return;
 
