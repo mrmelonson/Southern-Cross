@@ -22,7 +22,7 @@ namespace LunaBot.Commands
 
             if (parameters.Length  == 0)
             {
-                Logger.Verbose(message.Author.Username, "Failed assign command");
+                Logger.Info(message.Author.Username, "Failed assign command");
                 await message.Channel.SendMessageAsync("Error: Wrong syntax, try kassign `role`.");
 
                 return;
@@ -51,12 +51,12 @@ namespace LunaBot.Commands
                 await guildChannel.GetUser((ulong)user).AddRoleAsync(role);
 
                 await message.Channel.SendMessageAsync($"<@{user}>, Has been given the role: {role.Name}");
-                Logger.Verbose(message.Author.Username, $"Has been given role: {role.Name}");
+                Logger.Info(message.Author.Username, $"Has been given role: {role.Name}");
             }
             catch (Exception e)
             {
                 await message.Channel.SendMessageAsync($"<@{user}>, Sorry, either you mis-spelt the role or i dont have permission to give you that role.");
-                Logger.Verbose(message.Author.Username, $"Command failed: {e.Message}");
+                Logger.Info(message.Author.Username, $"Command failed: {e.Message}");
             }
         }
     }

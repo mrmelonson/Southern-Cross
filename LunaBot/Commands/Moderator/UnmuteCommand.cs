@@ -19,7 +19,7 @@ namespace LunaBot.Commands
                 // Check if command params are correct.
                 if (parameters.Length != 1)
                 {
-                    Logger.Verbose(message.Author.Username, "Failed unmute command");
+                    Logger.Info(message.Author.Username, "Failed unmute command");
                     await message.Channel.SendMessageAsync("Error: Wrong syntax, try kunmute [user].");
 
                     return;
@@ -28,7 +28,7 @@ namespace LunaBot.Commands
                 // Check if user attached is correct.
                 if (message.MentionedUsers.Count() == 0)
                 {
-                    Logger.Verbose(message.Author.Username, "Failed unmute command");
+                    Logger.Info(message.Author.Username, "Failed unmute command");
                     await message.Channel.SendMessageAsync($"Error: No user mentioned, try kunmute [user].");
 
                     return;

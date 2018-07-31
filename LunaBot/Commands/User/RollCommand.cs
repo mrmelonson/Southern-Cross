@@ -18,7 +18,7 @@ namespace LunaBot.Commands
                 if (rolePts.Count() != 2)
                 {
                     await message.Channel.SendMessageAsync("Invalid roll, roll must be of the form [# of sides]d[# of dice]");
-                    Logger.Verbose(message.Author.Username, "Has failed roll command");
+                    Logger.Info(message.Author.Username, "Has failed roll command");
 
                     return;
                 }
@@ -41,14 +41,14 @@ namespace LunaBot.Commands
                 catch (Exception e)
                 {
                     await message.Channel.SendMessageAsync("Invalid roll, roll must be of the form [# of sides]d[# of dice]");
-                    Logger.Verbose(message.Author.Username, $"Has failed roll command, Reason: {e.Message}");
+                    Logger.Info(message.Author.Username, $"Has failed roll command, Reason: {e.Message}");
 
                     return;
                 }
             }
 
             await message.Channel.SendMessageAsync("Invalid roll, roll must be of the form [# of sides]d[# of dice]");
-            Logger.Verbose(message.Author.Username, "Has failed roll command");
+            Logger.Info(message.Author.Username, "Has failed roll command");
 
             return;
         }

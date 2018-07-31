@@ -100,13 +100,6 @@ namespace LunaBot
         {
             try
             {
-                // Log Message
-                foreach(ulong x in Channels.Staff_Channels)
-                {
-                    if (message.Channel.Id == x) { return;  }
-                }
-
-                await message.LogAsync(LogSeverity.Verbose).ConfigureAwait(false);
 
                 // ignore your own message if you ever manage to do this.
                 if (message.Author.IsBot)
@@ -158,7 +151,7 @@ namespace LunaBot
 
             if (this.commandDictionary.ContainsKey(command))
             {
-                Logger.Verbose(
+                Logger.Info(
                     message.Author.Username,
                     string.Format(StringTable.RecognizedCommand, command, string.Join(",", commandParams)));
                 try

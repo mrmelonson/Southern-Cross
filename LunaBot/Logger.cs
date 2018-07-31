@@ -59,10 +59,12 @@ namespace LunaBot
             LogAsync(new LogMessage(LogSeverity.Warning, source, message));
         }
 
+        /*
         public static void Verbose(string source, string message)
         {
             LogAsync(new LogMessage(LogSeverity.Verbose, source, message));
         }
+        */
 
         public static void Info(string source, string message)
         {

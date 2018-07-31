@@ -21,11 +21,12 @@ namespace LunaBot.Commands
 
             if (parameters.Length == 0)
             {
-                Logger.Verbose(message.Author.Username, "Failed remove command");
+                Logger.Info(message.Author.Username, "Failed remove command");
                 await message.Channel.SendMessageAsync("Error: Wrong syntax, try kremove `role`.");
 
                 return;
             }
+
 
             ulong user = message.Author.Id;
 
@@ -50,12 +51,12 @@ namespace LunaBot.Commands
                 await guildChannel.GetUser((ulong)user).RemoveRoleAsync(role);
 
                 await message.Channel.SendMessageAsync($"<@{user}>, I have removed the role: {role.Name}");
-                Logger.Verbose(message.Author.Username, $"Removed: {role.Name}");
+                Logger.Info(message.Author.Username, $"Removed: {role.Name}");
             }
             catch (Exception e)
             {
                 await message.Channel.SendMessageAsync($"<@{user}>, Sorry, either you mis-spelt the role or i dont have permission to remove that role.");
-                Logger.Verbose(message.Author.Username, $"Command failed: {e.Message}");
+                Logger.Info(message.Author.Username, $"Command failed: {e.Message}");
             }
         }
     }
