@@ -56,6 +56,8 @@ namespace LunaBot.Commands
                 "```kping```");
             commands.Add("Infomation :\n" +
                 "```kinfo```");
+            commands.Add("Check if role exists:\n" +
+                "```kcheckrole [role]```");
             try
             {
                 await user.SendMessageAsync(string.Join('\n', commands));
