@@ -61,6 +61,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>StringTable.resx</DependentUpon>
     </Compile>
+    <Compile Update="StringTable.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StringTable.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -78,7 +83,7 @@
     </EmbeddedResource>
     <EmbeddedResource Update="StringTable.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>StringTable - Copy.Designer.cs</LastGenOutput>
+      <LastGenOutput>StringTable.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

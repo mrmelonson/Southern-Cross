@@ -151,6 +151,7 @@ namespace LunaBot
 
             if (this.commandDictionary.ContainsKey(command))
             {
+                
                 Logger.Info(
                     message.Author.Username,
                     string.Format(StringTable.RecognizedCommand, command, string.Join(",", commandParams)));

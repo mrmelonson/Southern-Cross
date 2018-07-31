@@ -15,7 +15,7 @@ namespace LunaBot.Commands
 
             if (parameters.Length == 0)
             {
-                Logger.Verbose(message.Author.Username, "Failed checkrole command");
+                Logger.Info(message.Author.Username, "Failed checkrole command");
                 await message.Channel.SendMessageAsync("Error: Wrong syntax, try kcheckrole `role`.");
 
                 return;
@@ -32,12 +32,12 @@ namespace LunaBot.Commands
                 SocketRole role = roles.Find(roleFinder);
 
                 await message.Channel.SendMessageAsync($"Role `{role.Name}` exists.");
-                Logger.Verbose(message.Author.Username, $"Exists: {role.Name}");
+                Logger.Info(message.Author.Username, $"Exists: {role.Name}");
             }
             catch (Exception e)
             {
                 await message.Channel.SendMessageAsync($"Role `{roleName}` does not exist.");
-                Logger.Verbose(message.Author.Username, $"Does not exist: {roleName}");
+                Logger.Info(message.Author.Username, $"Does not exist: {roleName}");
             }
         }
     }
